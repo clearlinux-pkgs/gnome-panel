@@ -1,0 +1,6 @@
+# This file contains additional pkgconfig build requirements that did
+# not get picked up automatically. One name per line, no whitespace.
+gnome-desktop-3.0
+libgnome-menu-3.0
+libwnck-3.0
+gweather-3.0
