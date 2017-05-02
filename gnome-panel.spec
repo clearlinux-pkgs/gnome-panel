@@ -4,7 +4,7 @@
 #
 Name     : gnome-panel
 Version  : 3.24.1
-Release  : 4
+Release  : 5
 URL      : https://download.gnome.org/sources/gnome-panel/3.24/gnome-panel-3.24.1.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-panel/3.24/gnome-panel-3.24.1.tar.xz
 Summary  : libgnome-panel
