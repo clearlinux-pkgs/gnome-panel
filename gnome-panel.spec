@@ -4,7 +4,7 @@
 #
 Name     : gnome-panel
 Version  : 3.24.1
-Release  : 5
+Release  : 6
 URL      : https://download.gnome.org/sources/gnome-panel/3.24/gnome-panel-3.24.1.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-panel/3.24/gnome-panel-3.24.1.tar.xz
 Summary  : libgnome-panel
@@ -22,17 +22,29 @@ BuildRequires : gtk-doc-dev
 BuildRequires : itstool
 BuildRequires : libxslt-bin
 BuildRequires : perl(XML::Parser)
+BuildRequires : pkgconfig(cairo)
+BuildRequires : pkgconfig(cairo-gobject)
+BuildRequires : pkgconfig(cairo-xlib)
 BuildRequires : pkgconfig(dconf)
+BuildRequires : pkgconfig(gdk-pixbuf-2.0)
 BuildRequires : pkgconfig(gdm)
 BuildRequires : pkgconfig(gio-2.0)
+BuildRequires : pkgconfig(gio-unix-2.0)
+BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gmodule-2.0)
 BuildRequires : pkgconfig(gnome-desktop-3.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(gweather-3.0)
 BuildRequires : pkgconfig(libecal-1.2)
+BuildRequires : pkgconfig(libedataserver-1.2)
 BuildRequires : pkgconfig(libgnome-menu-3.0)
 BuildRequires : pkgconfig(libwnck-3.0)
+BuildRequires : pkgconfig(pango)
 BuildRequires : pkgconfig(polkit-gobject-1)
+BuildRequires : pkgconfig(x11)
+BuildRequires : pkgconfig(xrandr)
+BuildRequires : six
+BuildRequires : six-python
 
 %description
 gnome-panel
@@ -102,14 +114,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1492878809
+export SOURCE_DATE_EPOCH=1502729563
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -121,7 +133,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1492878809
+export SOURCE_DATE_EPOCH=1502729563
 rm -rf %{buildroot}
 %make_install
 %find_lang gnome-panel

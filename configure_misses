@@ -1,0 +1,6 @@
+Configure miss: whether to enable debugging
+Configure miss: whether C compiler accepts -Werror=unknown-warning-option
+Configure miss: whether the linker accepts -Wl,-fatal_warnings
+Configure miss: tzfile.h usability
+Configure miss: tzfile.h presence
+Configure miss: tzfile.h
