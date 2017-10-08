@@ -1,5 +1,5 @@
 PKG_NAME := gnome-panel
-URL := https://download.gnome.org/sources/gnome-panel/3.24/gnome-panel-3.24.1.tar.xz
+URL := https://download.gnome.org/sources/gnome-panel/3.26/gnome-panel-3.26.0.tar.xz
 
 
 include ../common/Makefile.common
