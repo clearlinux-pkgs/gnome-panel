@@ -4,7 +4,7 @@
 #
 Name     : gnome-panel
 Version  : 3.26.0
-Release  : 9
+Release  : 10
 URL      : https://download.gnome.org/sources/gnome-panel/3.26/gnome-panel-3.26.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-panel/3.26/gnome-panel-3.26.0.tar.xz
 Summary  : libgnome-panel
@@ -112,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507504464
+export SOURCE_DATE_EPOCH=1517683743
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -121,7 +121,7 @@ export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sec
 export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -131,7 +131,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1507504464
+export SOURCE_DATE_EPOCH=1517683743
 rm -rf %{buildroot}
 %make_install
 %find_lang gnome-panel
