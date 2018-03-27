@@ -1,5 +1,4 @@
 Configure miss: whether to enable debugging
-Configure miss: whether C compiler accepts -Werror=unknown-warning-option
 Configure miss: tzfile.h usability
 Configure miss: tzfile.h presence
 Configure miss: tzfile.h

@@ -18,11 +18,12 @@ libgnome-desktop-3.so.12
 libgnome-menu-3.so.0
 libgobject-2.0.so.0
 libgtk-3.so.0
-libgweather-3.so.6
+libgweather-3.so.15
 libical.so.3
 libm.so.6
 libpango-1.0.so.0
 libpangocairo-1.0.so.0
 libpolkit-gobject-1.so.0
 libpthread.so.0
+libsystemd.so.0
 libwnck-3.so.0
