@@ -4,18 +4,18 @@
 #
 Name     : gnome-panel
 Version  : 3.30.0
-Release  : 18
+Release  : 19
 URL      : https://download.gnome.org/sources/gnome-panel/3.30/gnome-panel-3.30.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-panel/3.30/gnome-panel-3.30.0.tar.xz
-Summary  : libgnome-panel
+Summary  : Panel of GNOME Flashback
 Group    : Development/Tools
 License  : GFDL-1.1 GPL-2.0 LGPL-2.0 LGPL-2.1
-Requires: gnome-panel-bin
-Requires: gnome-panel-lib
-Requires: gnome-panel-data
-Requires: gnome-panel-license
-Requires: gnome-panel-locales
-Requires: gnome-panel-man
+Requires: gnome-panel-bin = %{version}-%{release}
+Requires: gnome-panel-data = %{version}-%{release}
+Requires: gnome-panel-lib = %{version}-%{release}
+Requires: gnome-panel-license = %{version}-%{release}
+Requires: gnome-panel-locales = %{version}-%{release}
+Requires: gnome-panel-man = %{version}-%{release}
 BuildRequires : buildreq-gnome
 BuildRequires : docbook-xml
 BuildRequires : gettext
@@ -52,9 +52,8 @@ BuildRequires : pkgconfig(xrandr)
 %package bin
 Summary: bin components for the gnome-panel package.
 Group: Binaries
-Requires: gnome-panel-data
-Requires: gnome-panel-license
-Requires: gnome-panel-man
+Requires: gnome-panel-data = %{version}-%{release}
+Requires: gnome-panel-license = %{version}-%{release}
 
 %description bin
 bin components for the gnome-panel package.
@@ -71,10 +70,11 @@ data components for the gnome-panel package.
 %package dev
 Summary: dev components for the gnome-panel package.
 Group: Development
-Requires: gnome-panel-lib
-Requires: gnome-panel-bin
-Requires: gnome-panel-data
-Provides: gnome-panel-devel
+Requires: gnome-panel-lib = %{version}-%{release}
+Requires: gnome-panel-bin = %{version}-%{release}
+Requires: gnome-panel-data = %{version}-%{release}
+Provides: gnome-panel-devel = %{version}-%{release}
+Requires: gnome-panel = %{version}-%{release}
 
 %description dev
 dev components for the gnome-panel package.
@@ -83,7 +83,7 @@ dev components for the gnome-panel package.
 %package doc
 Summary: doc components for the gnome-panel package.
 Group: Documentation
-Requires: gnome-panel-man
+Requires: gnome-panel-man = %{version}-%{release}
 
 %description doc
 doc components for the gnome-panel package.
@@ -92,8 +92,8 @@ doc components for the gnome-panel package.
 %package lib
 Summary: lib components for the gnome-panel package.
 Group: Libraries
-Requires: gnome-panel-data
-Requires: gnome-panel-license
+Requires: gnome-panel-data = %{version}-%{release}
+Requires: gnome-panel-license = %{version}-%{release}
 
 %description lib
 lib components for the gnome-panel package.
@@ -131,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536517646
+export SOURCE_DATE_EPOCH=1556988773
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -150,13 +150,13 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1536517646
+export SOURCE_DATE_EPOCH=1556988773
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/gnome-panel
-cp COPYING %{buildroot}/usr/share/doc/gnome-panel/COPYING
-cp COPYING-DOCS %{buildroot}/usr/share/doc/gnome-panel/COPYING-DOCS
-cp COPYING.LESSER %{buildroot}/usr/share/doc/gnome-panel/COPYING.LESSER
-cp COPYING.LIB %{buildroot}/usr/share/doc/gnome-panel/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/gnome-panel
+cp COPYING %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING
+cp COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING-DOCS
+cp COPYING.LESSER %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING.LESSER
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING.LIB
 %make_install
 %find_lang gnome-panel
 
@@ -429,14 +429,14 @@ cp COPYING.LIB %{buildroot}/usr/share/doc/gnome-panel/COPYING.LIB
 /usr/lib64/libpanel-applet.so.3.0.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/gnome-panel/COPYING
-/usr/share/doc/gnome-panel/COPYING-DOCS
-/usr/share/doc/gnome-panel/COPYING.LESSER
-/usr/share/doc/gnome-panel/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/gnome-panel/COPYING
+/usr/share/package-licenses/gnome-panel/COPYING-DOCS
+/usr/share/package-licenses/gnome-panel/COPYING.LESSER
+/usr/share/package-licenses/gnome-panel/COPYING.LIB
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/gnome-panel.1
 
 %files locales -f gnome-panel.lang
