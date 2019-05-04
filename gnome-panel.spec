@@ -4,7 +4,7 @@
 #
 Name     : gnome-panel
 Version  : 3.30.0
-Release  : 19
+Release  : 20
 URL      : https://download.gnome.org/sources/gnome-panel/3.30/gnome-panel-3.30.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-panel/3.30/gnome-panel-3.30.0.tar.xz
 Summary  : Panel of GNOME Flashback
@@ -131,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1556988773
+export SOURCE_DATE_EPOCH=1557004784
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -150,7 +150,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1556988773
+export SOURCE_DATE_EPOCH=1557004784
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gnome-panel
 cp COPYING %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING
