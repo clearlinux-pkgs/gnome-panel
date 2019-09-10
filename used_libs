@@ -4,7 +4,7 @@ libc.so.6
 libcairo-gobject.so.2
 libcairo.so.2
 libdconf.so.1
-libecal-1.2.so.19
+libecal-2.0.so.1
 libedataserver-1.2.so.24
 libgdk-3.so.0
 libgdk_pixbuf-2.0.so.0
@@ -17,7 +17,7 @@ libgnome-menu-3.so.0
 libgobject-2.0.so.0
 libgtk-3.so.0
 libgweather-3.so.15
-libical.so.3
+libical-glib.so.3
 libm.so.6
 libpango-1.0.so.0
 libpangocairo-1.0.so.0
