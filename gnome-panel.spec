@@ -4,7 +4,7 @@
 #
 Name     : gnome-panel
 Version  : 3.34.1
-Release  : 25
+Release  : 26
 URL      : https://download.gnome.org/sources/gnome-panel/3.34/gnome-panel-3.34.1.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-panel/3.34/gnome-panel-3.34.1.tar.xz
 Summary  : libgnome-panel
@@ -46,6 +46,7 @@ BuildRequires : pkgconfig(polkit-gobject-1)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xi)
 BuildRequires : pkgconfig(xrandr)
+Patch1: 0001-fix-broken-svg-for-librsvg-2.47.0.patch
 
 %description
 
@@ -126,13 +127,15 @@ man components for the gnome-panel package.
 
 %prep
 %setup -q -n gnome-panel-3.34.1
+cd %{_builddir}/gnome-panel-3.34.1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570482135
+export SOURCE_DATE_EPOCH=1573076254
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -152,13 +155,13 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1570482135
+export SOURCE_DATE_EPOCH=1573076254
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gnome-panel
-cp COPYING %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING
-cp COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING-DOCS
-cp COPYING.LESSER %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING.LESSER
-cp COPYING.LIB %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING.LIB
+cp %{_builddir}/gnome-panel-3.34.1/COPYING %{buildroot}/usr/share/package-licenses/gnome-panel/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/gnome-panel-3.34.1/COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-panel/4f485ab7059ac53d9e3818278ad82217ce976a36
+cp %{_builddir}/gnome-panel-3.34.1/COPYING.LESSER %{buildroot}/usr/share/package-licenses/gnome-panel/3704f4680301a60004b20f94e0b5b8c7ff1484a9
+cp %{_builddir}/gnome-panel-3.34.1/COPYING.LIB %{buildroot}/usr/share/package-licenses/gnome-panel/ba8966e2473a9969bdcab3dc82274c817cfd98a1
 %make_install
 %find_lang gnome-panel
 
@@ -432,10 +435,10 @@ cp COPYING.LIB %{buildroot}/usr/share/package-licenses/gnome-panel/COPYING.LIB
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/gnome-panel/COPYING
-/usr/share/package-licenses/gnome-panel/COPYING-DOCS
-/usr/share/package-licenses/gnome-panel/COPYING.LESSER
-/usr/share/package-licenses/gnome-panel/COPYING.LIB
+/usr/share/package-licenses/gnome-panel/3704f4680301a60004b20f94e0b5b8c7ff1484a9
+/usr/share/package-licenses/gnome-panel/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/gnome-panel/4f485ab7059ac53d9e3818278ad82217ce976a36
+/usr/share/package-licenses/gnome-panel/ba8966e2473a9969bdcab3dc82274c817cfd98a1
 
 %files man
 %defattr(0644,root,root,0755)

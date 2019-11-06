@@ -1,0 +1,82 @@
+From b4b296e3b39d1b97f5a3fce3a10424f1f35cf251 Mon Sep 17 00:00:00 2001
+From: "Simental Magana, Marcos" <marcos.simental.magana@intel.com>
+Date: Wed, 6 Nov 2019 15:28:02 -0600
+Subject: [PATCH] fix broken svg for librsvg-2.47.0
+
+Signed-off-by: Simental Magana, Marcos <marcos.simental.magana@intel.com>
+---
+ data/scalable/gnome-panel-force-quit.svg         | 2 +-
+ data/scalable/gnome-panel-notification-area.svg  | 2 +-
+ data/scalable/gnome-panel-window-menu.svg        | 2 +-
+ data/scalable/gnome-panel-workspace-switcher.svg | 2 +-
+ data/scalable/gnome-panel.svg                    | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/data/scalable/gnome-panel-force-quit.svg b/data/scalable/gnome-panel-force-quit.svg
+index 598b1f6..964c1b1 100644
+--- a/data/scalable/gnome-panel-force-quit.svg
++++ b/data/scalable/gnome-panel-force-quit.svg
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <!-- Created with Inkscape (http://www.inkscape.org/) -->
+ <svg
+-   xmlns:s="http://inkscape.sourceforge.net/DTD/s odipodi-0.dtd"
++   xmlns:s="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+diff --git a/data/scalable/gnome-panel-notification-area.svg b/data/scalable/gnome-panel-notification-area.svg
+index 4220379..fda6716 100644
+--- a/data/scalable/gnome-panel-notification-area.svg
++++ b/data/scalable/gnome-panel-notification-area.svg
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <!-- Created with Inkscape (http://www.inkscape.org/) -->
+ <svg
+-   xmlns:s="http://inkscape.sourceforge.net/DTD/s odipodi-0.dtd"
++   xmlns:s="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+diff --git a/data/scalable/gnome-panel-window-menu.svg b/data/scalable/gnome-panel-window-menu.svg
+index 3e6c1ce..a24392b 100644
+--- a/data/scalable/gnome-panel-window-menu.svg
++++ b/data/scalable/gnome-panel-window-menu.svg
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <!-- Created with Inkscape (http://www.inkscape.org/) -->
+ <svg
+-   xmlns:s="http://inkscape.sourceforge.net/DTD/s odipodi-0.dtd"
++   xmlns:s="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+diff --git a/data/scalable/gnome-panel-workspace-switcher.svg b/data/scalable/gnome-panel-workspace-switcher.svg
+index f457585..15d37ea 100644
+--- a/data/scalable/gnome-panel-workspace-switcher.svg
++++ b/data/scalable/gnome-panel-workspace-switcher.svg
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <!-- Created with Inkscape (http://www.inkscape.org/) -->
+ <svg
+-   xmlns:s="http://inkscape.sourceforge.net/DTD/s odipodi-0.dtd"
++   xmlns:s="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+diff --git a/data/scalable/gnome-panel.svg b/data/scalable/gnome-panel.svg
+index c30bb19..a12ff98 100644
+--- a/data/scalable/gnome-panel.svg
++++ b/data/scalable/gnome-panel.svg
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <!-- Created with Inkscape (http://www.inkscape.org/) -->
+ <svg
+-   xmlns:s="http://inkscape.sourceforge.net/DTD/s odipodi-0.dtd"
++   xmlns:s="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+-- 
+2.23.0
+
