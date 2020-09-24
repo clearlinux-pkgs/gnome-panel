@@ -4,7 +4,7 @@
 #
 Name     : gnome-panel
 Version  : 3.36.2
-Release  : 28
+Release  : 29
 URL      : https://download.gnome.org/sources/gnome-panel/3.36/gnome-panel-3.36.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-panel/3.36/gnome-panel-3.36.2.tar.xz
 Summary  : libgnome-panel
