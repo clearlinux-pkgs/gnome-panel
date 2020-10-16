@@ -1,6 +1,13 @@
-Version 3.36.2
+Version 3.38.0
 ==============
-- Mount volumes if needed in gp_menu_utils_launch_uri. (!27)
+- Fix ssh/sftp bookmarks in Places menu. (#27)
+- Updated translations.
+
+Version 3.37.1
+==============
+- New Add to Panel dialog. (!33)
+- Turn old remaining objects into applets. (!31, !30, !29, !28, !27, !22)
+- Remove old libpanel-applet library. (!18)
 - Updated translations.
 
 Version 3.36.1
