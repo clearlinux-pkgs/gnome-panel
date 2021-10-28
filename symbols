@@ -24,11 +24,15 @@ libgnome-panel.so.0:gp_applet_menu_lookup_action
 libgnome-panel.so.0:gp_applet_popup_menu_at_widget
 libgnome-panel.so.0:gp_applet_remove_from_panel
 libgnome-panel.so.0:gp_applet_request_focus
+libgnome-panel.so.0:gp_applet_set_enable_tooltips
 libgnome-panel.so.0:gp_applet_set_flags
 libgnome-panel.so.0:gp_applet_set_lockdowns
 libgnome-panel.so.0:gp_applet_set_locked_down
+libgnome-panel.so.0:gp_applet_set_menu_icon_size
 libgnome-panel.so.0:gp_applet_set_orientation
+libgnome-panel.so.0:gp_applet_set_panel_icon_size
 libgnome-panel.so.0:gp_applet_set_position
+libgnome-panel.so.0:gp_applet_set_prefer_symbolic_icons
 libgnome-panel.so.0:gp_applet_set_size_hints
 libgnome-panel.so.0:gp_applet_settings_new
 libgnome-panel.so.0:gp_applet_setup_menu
