@@ -4,7 +4,7 @@
 #
 Name     : gnome-panel
 Version  : 3.44.0
-Release  : 34
+Release  : 35
 URL      : https://download.gnome.org/sources/gnome-panel/3.44/gnome-panel-3.44.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-panel/3.44/gnome-panel-3.44.0.tar.xz
 Summary  : libgnome-panel
@@ -34,7 +34,6 @@ BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gmodule-2.0)
 BuildRequires : pkgconfig(gnome-desktop-3.0)
 BuildRequires : pkgconfig(gtk+-3.0)
-BuildRequires : pkgconfig(gweather-3.0)
 BuildRequires : pkgconfig(gweather4)
 BuildRequires : pkgconfig(libecal-2.0)
 BuildRequires : pkgconfig(libedataserver-1.2)
@@ -133,7 +132,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1647898635
+export SOURCE_DATE_EPOCH=1661966802
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -153,12 +152,12 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1647898635
+export SOURCE_DATE_EPOCH=1661966802
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gnome-panel
-cp %{_builddir}/gnome-panel-3.44.0/COPYING %{buildroot}/usr/share/package-licenses/gnome-panel/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/gnome-panel-3.44.0/COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-panel/4f485ab7059ac53d9e3818278ad82217ce976a36
-cp %{_builddir}/gnome-panel-3.44.0/COPYING.LESSER %{buildroot}/usr/share/package-licenses/gnome-panel/3704f4680301a60004b20f94e0b5b8c7ff1484a9
+cp %{_builddir}/gnome-panel-%{version}/COPYING %{buildroot}/usr/share/package-licenses/gnome-panel/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/gnome-panel-%{version}/COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-panel/4f485ab7059ac53d9e3818278ad82217ce976a36
+cp %{_builddir}/gnome-panel-%{version}/COPYING.LESSER %{buildroot}/usr/share/package-licenses/gnome-panel/3704f4680301a60004b20f94e0b5b8c7ff1484a9
 %make_install
 %find_lang gnome-panel
 
