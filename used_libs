@@ -28,7 +28,6 @@ libm.so.6
 libpango-1.0.so.0
 libpangocairo-1.0.so.0
 libpolkit-gobject-1.so.0
-libsecret-1.so.0
 libsoup-3.0.so.0
 libsystemd.so.0
 libwnck-3.so.0

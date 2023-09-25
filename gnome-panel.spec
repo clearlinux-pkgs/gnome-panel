@@ -4,13 +4,13 @@
 # Using build pattern: configure
 #
 Name     : gnome-panel
-Version  : 3.46.0
-Release  : 72
-URL      : https://download.gnome.org/sources/gnome-panel/3.46/gnome-panel-3.46.0.tar.xz
-Source0  : https://download.gnome.org/sources/gnome-panel/3.46/gnome-panel-3.46.0.tar.xz
+Version  : 3.50.0
+Release  : 73
+URL      : https://download.gnome.org/sources/gnome-panel/3.50/gnome-panel-3.50.0.tar.xz
+Source0  : https://download.gnome.org/sources/gnome-panel/3.50/gnome-panel-3.50.0.tar.xz
 Summary  : libgnome-panel
 Group    : Development/Tools
-License  : GFDL-1.1 GPL-2.0 LGPL-2.1
+License  : GPL-2.0 LGPL-2.1
 Requires: gnome-panel-bin = %{version}-%{release}
 Requires: gnome-panel-data = %{version}-%{release}
 Requires: gnome-panel-lib = %{version}-%{release}
@@ -19,11 +19,7 @@ Requires: gnome-panel-locales = %{version}-%{release}
 Requires: gnome-panel-man = %{version}-%{release}
 BuildRequires : buildreq-configure
 BuildRequires : buildreq-gnome
-BuildRequires : docbook-xml
 BuildRequires : gettext
-BuildRequires : gtk-doc
-BuildRequires : gtk-doc-dev
-BuildRequires : libxslt-bin
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(cairo)
 BuildRequires : pkgconfig(cairo-xlib)
@@ -53,7 +49,9 @@ BuildRequires : pkgconfig(xrandr)
 %define debug_package %{nil}
 
 %description
-
+# About
+This repository contains the GNOME Panel of the GNOME Flashback project. It consists of the `gnome-panel` binary,
+the `libpanel-applet` library and several applets.
 
 %package bin
 Summary: bin components for the gnome-panel package.
@@ -130,48 +128,67 @@ man components for the gnome-panel package.
 
 
 %prep
-%setup -q -n gnome-panel-3.46.0
-cd %{_builddir}/gnome-panel-3.46.0
+%setup -q -n gnome-panel-3.50.0
+cd %{_builddir}/gnome-panel-3.50.0
+pushd ..
+cp -a gnome-panel-3.50.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680029852
+export SOURCE_DATE_EPOCH=1695681367
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -ffunction-sections -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %configure --disable-static
 make  %{?_smp_mflags}
 
+unset PKG_CONFIG_PATH
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
+%configure --disable-static
+make  %{?_smp_mflags}
+popd
 %check
 export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
+cd ../buildavx2;
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1680029852
+export SOURCE_DATE_EPOCH=1695681367
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gnome-panel
 cp %{_builddir}/gnome-panel-%{version}/COPYING %{buildroot}/usr/share/package-licenses/gnome-panel/4cc77b90af91e615a64ae04893fdffa7939db84c || :
-cp %{_builddir}/gnome-panel-%{version}/COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-panel/4f485ab7059ac53d9e3818278ad82217ce976a36 || :
 cp %{_builddir}/gnome-panel-%{version}/COPYING.LESSER %{buildroot}/usr/share/package-licenses/gnome-panel/3704f4680301a60004b20f94e0b5b8c7ff1484a9 || :
+pushd ../buildavx2/
+%make_install_v3
+popd
 %make_install
 %find_lang gnome-panel
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/gnome-panel
 /usr/bin/gnome-panel
 
 %files data
@@ -272,6 +289,7 @@ cp %{_builddir}/gnome-panel-%{version}/COPYING.LESSER %{buildroot}/usr/share/pac
 /usr/include/gnome-panel/libgnome-panel/gp-image-menu-item.h
 /usr/include/gnome-panel/libgnome-panel/gp-initial-setup-dialog.h
 /usr/include/gnome-panel/libgnome-panel/gp-lockdown.h
+/usr/include/gnome-panel/libgnome-panel/gp-macros.h
 /usr/include/gnome-panel/libgnome-panel/gp-module.h
 /usr/include/gnome-panel/libgnome-panel/gp-utils.h
 /usr/lib64/libgnome-panel.so
@@ -279,25 +297,6 @@ cp %{_builddir}/gnome-panel-%{version}/COPYING.LESSER %{buildroot}/usr/share/pac
 
 %files doc
 %defattr(0644,root,root,0755)
-/usr/share/gtk-doc/html/libgnome-panel/GpApplet.html
-/usr/share/gtk-doc/html/libgnome-panel/GpImageMenuItem.html
-/usr/share/gtk-doc/html/libgnome-panel/annotation-glossary.html
-/usr/share/gtk-doc/html/libgnome-panel/api-index-full.html
-/usr/share/gtk-doc/html/libgnome-panel/ch01.html
-/usr/share/gtk-doc/html/libgnome-panel/home.png
-/usr/share/gtk-doc/html/libgnome-panel/index.html
-/usr/share/gtk-doc/html/libgnome-panel/left-insensitive.png
-/usr/share/gtk-doc/html/libgnome-panel/left.png
-/usr/share/gtk-doc/html/libgnome-panel/libgnome-panel-GpAppletInfo.html
-/usr/share/gtk-doc/html/libgnome-panel/libgnome-panel-GpLockdown.html
-/usr/share/gtk-doc/html/libgnome-panel/libgnome-panel-Module.html
-/usr/share/gtk-doc/html/libgnome-panel/libgnome-panel.devhelp2
-/usr/share/gtk-doc/html/libgnome-panel/object-tree.html
-/usr/share/gtk-doc/html/libgnome-panel/right-insensitive.png
-/usr/share/gtk-doc/html/libgnome-panel/right.png
-/usr/share/gtk-doc/html/libgnome-panel/style.css
-/usr/share/gtk-doc/html/libgnome-panel/up-insensitive.png
-/usr/share/gtk-doc/html/libgnome-panel/up.png
 /usr/share/help/C/clock/index.docbook
 /usr/share/help/C/clock/legal.xml
 /usr/share/help/C/fish/index.docbook
@@ -411,6 +410,16 @@ cp %{_builddir}/gnome-panel-%{version}/COPYING.LESSER %{buildroot}/usr/share/pac
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.action-button.so
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.clock.so
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.fish.so
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.launcher.so
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.menu.so
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.notification-area.so
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.separator.so
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.status-notifier.so
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.wncklet.so
+/V3/usr/lib64/libgnome-panel.so.3.0.0
 /usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.action-button.so
 /usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.clock.so
 /usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.fish.so
@@ -420,14 +429,13 @@ cp %{_builddir}/gnome-panel-%{version}/COPYING.LESSER %{buildroot}/usr/share/pac
 /usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.separator.so
 /usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.status-notifier.so
 /usr/lib64/gnome-panel/modules/org.gnome.gnome-panel.wncklet.so
-/usr/lib64/libgnome-panel.so.0
-/usr/lib64/libgnome-panel.so.0.2.0
+/usr/lib64/libgnome-panel.so.3
+/usr/lib64/libgnome-panel.so.3.0.0
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/gnome-panel/3704f4680301a60004b20f94e0b5b8c7ff1484a9
 /usr/share/package-licenses/gnome-panel/4cc77b90af91e615a64ae04893fdffa7939db84c
-/usr/share/package-licenses/gnome-panel/4f485ab7059ac53d9e3818278ad82217ce976a36
 
 %files man
 %defattr(0644,root,root,0755)
