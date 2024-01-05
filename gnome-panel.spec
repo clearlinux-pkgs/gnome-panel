@@ -5,7 +5,7 @@
 #
 Name     : gnome-panel
 Version  : 3.50.0
-Release  : 75
+Release  : 76
 URL      : https://download.gnome.org/sources/gnome-panel/3.50/gnome-panel-3.50.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-panel/3.50/gnome-panel-3.50.0.tar.xz
 Summary  : libgnome-panel
